@@ -11,7 +11,7 @@ const watchProduct = async (productUrl, alias) => {
       watchProduct(productUrl, alias);
     }, 60_000);
   } else {
-    createNotification({ title: 'Nintendo Switch Checker', message: 'Product Available!!!', open: productUrl });
+    createNotification({ title: 'Nintendo Checker', message: 'Product Available!!!', open: productUrl });
   }
 }
 
