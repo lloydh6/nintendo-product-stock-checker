@@ -1,10 +1,6 @@
-import watchProduct from './watchProduct'
+import 'reflect-metadata'
+import {StockChecker, stockCheckingContainer} from './stockChecker'
 
-// Get the URL from the args
-const productUrl = process.argv[2]
+const stockChecker = stockCheckingContainer.resolve(StockChecker)
 
-// Get Alias for product to log
-const alias = process.argv[3]
-
-// Watch the product
-watchProduct(productUrl, alias)
+stockChecker.watch()

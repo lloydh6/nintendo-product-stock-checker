@@ -13,7 +13,9 @@
     "@types/node-notifier": "^6.0.1",
     "chowdown": "^1.2.5",
     "esm": "^3.2.25",
-    "node-notifier": "^7.0.0"
+    "node-notifier": "^7.0.0",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.3.0"
   },
   "scripts": {
     "start": "tsc -p . && node -r esm build/src/index.js",
@@ -25,7 +27,8 @@
     "prepare": "yarn compile",
     "pretest": "yarn compile",
     "posttest": "yarn check",
-    "watch": "tsc -w"
+    "watch": "jest --watch",
+    "watchAll": "jest --watchAll"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",

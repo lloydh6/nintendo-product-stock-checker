@@ -21,6 +21,7 @@ module.exports = {
     'no-unused-vars': 0,
     'semi': ['error', 'never'],
     'require-jsdoc': 0,
-    'indent': ['error', 4]
+    'indent': ['error', 4],
+    'max-len': ['error', {"code": 120}]
   },
 };
