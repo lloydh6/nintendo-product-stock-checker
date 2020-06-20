@@ -1,10 +1,54 @@
 {
+  "name": "product-stock-checker",
+  "version": "1.0.0",
+  "description": "Get alerted when a product you want becomes available again.",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [],
   "dependencies": {
+    "@types/node-notifier": "^6.0.1",
     "chowdown": "^1.2.5",
     "esm": "^3.2.25",
     "node-notifier": "^7.0.0"
   },
   "scripts": {
-    "start": "node -r esm main.js"
+    "start": "tsc -p . && node -r esm build/src/index.js",
+    "test": "jest",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "yarn compile",
+    "pretest": "yarn compile",
+    "posttest": "yarn check",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^10.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "gts": "^1.1.2",
+    "jest": "^25.1.0",
+    "ts-autofixture": "^1.0.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.9.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/tests/.*\\.(ts|tsx|js)$"
   }
 }
