@@ -1,4 +1,4 @@
-import {Website} from './configuration/configuration'
+import {Website} from '../configuration/configuration'
 
 interface SupportedStockChecker extends Website {
     isSupported: true,

@@ -1,6 +1,6 @@
 import {container as appContainer, injectable, inject} from 'tsyringe'
 import registerDependencies from './registerDependencies'
-import {SupportedStockChecker} from './stockChecker'
+import {SupportedStockChecker} from './stockCheckers/stockChecker'
 
 @injectable()
 class App {

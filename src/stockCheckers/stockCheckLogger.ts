@@ -1,4 +1,4 @@
-import {SupportedStockChecker, NotSupportedStockChecker} from '../stockChecker'
+import {SupportedStockChecker, NotSupportedStockChecker} from './stockChecker'
 
 class SupportedStockCheckLogger implements SupportedStockChecker {
     public readonly alias!: string
@@ -12,7 +12,7 @@ class SupportedStockCheckLogger implements SupportedStockChecker {
     async isInStock(): Promise<boolean> {
         const isInStock = await this.loggedInstance.isInStock()
 
-        console.log(`${this.alias}: In Stock: ${isInStock} - ${new Date().toString()}`)
+        console.log(`${this.alias}:\n\tIn Stock? ${isInStock}\t${new Date().toString()}`)
 
         return isInStock
     }

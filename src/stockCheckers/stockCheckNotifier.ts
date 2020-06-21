@@ -1,4 +1,4 @@
-import {SupportedStockChecker} from '../stockChecker'
+import {SupportedStockChecker} from './stockChecker'
 import {NotificationFactory} from '../notifications/notifcationFactory'
 
 class StockCheckNotifier implements SupportedStockChecker {

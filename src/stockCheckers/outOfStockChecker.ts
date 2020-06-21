@@ -1,5 +1,5 @@
 import chowdown from 'chowdown'
-import {SupportedStockChecker} from '../stockChecker'
+import {SupportedStockChecker} from './stockChecker'
 import {Website} from '../configuration/configuration'
 
 class OutOfStockChecker implements SupportedStockChecker {
@@ -13,9 +13,9 @@ class OutOfStockChecker implements SupportedStockChecker {
 
     async isInStock(): Promise<boolean> {
         const scope = chowdown(this.url)
-        const soldOutInstances = await scope.collection(this.outOfStockSelector)
+        const outOfStockInstances = await scope.collection(this.outOfStockSelector)
 
-        return soldOutInstances.length === 0
+        return outOfStockInstances.length === 0
     }
 }
 
