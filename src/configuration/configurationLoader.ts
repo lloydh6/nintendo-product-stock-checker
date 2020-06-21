@@ -1,12 +1,12 @@
 import {inject, injectable, injectAll} from 'tsyringe'
 import {Configuration} from './configuration'
 
-export interface ConfigurationLoader {
+interface ConfigurationLoader {
     load(): Configuration
 }
 
 @injectable()
-export class FileConfigurationLoader implements ConfigurationLoader {
+class FileConfigurationLoader implements ConfigurationLoader {
     private readonly fileName: string;
 
     constructor(@inject('fileSystem') private fileSystem, @inject('argv') argv?: string[]) {
@@ -22,3 +22,5 @@ export class FileConfigurationLoader implements ConfigurationLoader {
         return JSON.parse(configuration)
     }
 }
+
+export {ConfigurationLoader, FileConfigurationLoader}

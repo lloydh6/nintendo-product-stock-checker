@@ -3,6 +3,8 @@ type Website = {
     alias: string
 }
 
-export type Configuration = {
+type Configuration = {
     websites: Website[]
 }
+
+export {Website, Configuration}
