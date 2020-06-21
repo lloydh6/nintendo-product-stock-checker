@@ -6,6 +6,7 @@ import fs from 'fs'
 import {MultipleStockChecker} from './stockCheckers/multipleStockChecker'
 import {OutOfStockChecker} from './stockCheckers/outOfStockChecker'
 import {createFactory} from './stockCheckerFactory'
+import { CurrysStockChecker } from './stockCheckers/currysStockChecker'
 
 const loadConfiguration = (container: DependencyContainer): Configuration => {
     const configurationLoader = container.resolve<ConfigurationLoader>('configurationLoader')
@@ -22,6 +23,10 @@ export default (container: DependencyContainer) => {
     container.register('stockCheckerFactory', {useValue: createFactory([
         [
             'http(s?):\/\/store.nintendo.co.uk',
-            (website) => new OutOfStockChecker(website, '.productAddToBasket-soldOut')],
+            (website) => new OutOfStockChecker(website, '.productAddToBasket-soldOut'),
+        ], [
+            'http(s?):\/\/www.currys.co.uk',
+            (website) => new CurrysStockChecker(website),
+        ],
     ])})
 }

@@ -3,8 +3,17 @@
             "url": "https://store.nintendo.co.uk/nintendo-switch-console/nintendo-switch-with-grey-joy-con-controllers/12245184.html",
             "alias": "Nintendo Switch Grey"
         }, {
-            "url": "https://store.nintendo.co.uk/nintendo-switch-console/nintendo-switch-neon-blue-neon-red-mario-kart-8-deluxe-pack/12611939.html",
-            "alias": "Nintendo Switch Neon with Mario Kart"
+            "url": "https://www.currys.co.uk/gbuk/tv-and-home-entertainment/gaming/gaming-consoles/microsoft-xbox-one-x-with-forza-horizon-4-lego-speed-champions-10202173-pdt.html",
+            "alias": "Xbox One X (Forza Horizons 4)",
+            "postCode": "WF105WF",
+            "latitude": "53.713445",
+            "longitude": "-1.405047"
+        }, {
+            "url": "https://www.currys.co.uk/gbuk/tv-and-home-entertainment/gaming/gaming-consoles/microsoft-xbox-one-x-with-star-wars-jedi-fallen-order-deluxe-edition-10202410-pdt.html",
+            "alias": "Xbox One X (Jedi Fallen Order)",
+            "postCode": "WF105WF",
+            "latitude": "53.713445",
+            "longitude": "-1.405047"
         }
     ]
 }
