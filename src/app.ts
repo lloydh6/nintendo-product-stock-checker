@@ -1,17 +1,19 @@
 import {container as appContainer, injectable, inject} from 'tsyringe'
-import {Configuration} from './configuration/configuration'
 import registerDependencies from './registerDependencies'
-import watchProduct from './watchProduct'
+import {SupportedStockChecker} from './stockChecker'
 
 @injectable()
 class App {
-    constructor(@inject('configuration') private configuration: Configuration) {}
+    constructor(@inject('stockChecker') private stockChecker: SupportedStockChecker) {}
 
-    public watchWebsites() {
-        const website = this.configuration.websites[0]
+    public async start(): Promise<void> {
+        const isInStock = await this.stockChecker.isInStock()
 
-        // Watch the product
-        watchProduct(website.url, website.alias)
+        if (!isInStock) {
+            setTimeout(() => {
+                this.start()
+            }, 60_000)
+        }
     }
 }
 

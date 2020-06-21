@@ -3,4 +3,4 @@ import {App, appContainer} from './app'
 
 const app = appContainer.resolve(App)
 
-app.watchWebsites()
+app.start()
