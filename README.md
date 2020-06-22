@@ -56,3 +56,4 @@ yarn start
 * [Nintendo Store](https://store.nintendo.co.uk/)
 * [Currys](https://www.currys.co.uk)
 * [AO.com](https://ao.com/)
+* [Ooni Oven Store](https://uk.ooni.com/)
