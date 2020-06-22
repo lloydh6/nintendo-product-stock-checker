@@ -1,12 +1,12 @@
 import 'reflect-metadata'
 import {Configuration} from './configuration/configuration'
+import {createFactory} from './stockCheckerFactory'
+import {CurrysStockChecker} from './stockCheckers/currysStockChecker'
 import {DependencyContainer, instanceCachingFactory} from 'tsyringe'
 import {FileConfigurationLoader, ConfigurationLoader} from './configuration/configurationLoader'
 import fs from 'fs'
 import {MultipleStockChecker} from './stockCheckers/multipleStockChecker'
 import {OutOfStockChecker} from './stockCheckers/outOfStockChecker'
-import {createFactory} from './stockCheckerFactory'
-import { CurrysStockChecker } from './stockCheckers/currysStockChecker'
 
 const loadConfiguration = (container: DependencyContainer): Configuration => {
     const configurationLoader = container.resolve<ConfigurationLoader>('configurationLoader')
