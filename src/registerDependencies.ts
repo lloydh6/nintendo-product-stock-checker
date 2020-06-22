@@ -27,6 +27,9 @@ export default (container: DependencyContainer) => {
         ], [
             'http(s?):\/\/www.currys.co.uk',
             (website) => new CurrysStockChecker(website),
+        ], [
+            'http(s?):\/\/ao.com',
+            (website) => new OutOfStockChecker(website, '.back-in-stock'),
         ],
     ])})
 }
