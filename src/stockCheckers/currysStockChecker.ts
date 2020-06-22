@@ -3,6 +3,7 @@ import {SupportedStockChecker} from './stockChecker'
 import {Website} from '../configuration/configuration'
 
 type CurrysStockPosition = {
+    status: 'success' | 'fail',
     data: {
         collect: [{
             stockType: 'OUT_OF_STOCK' | 'IN_STOCK'
@@ -29,13 +30,15 @@ class CurrysStockChecker implements SupportedStockChecker {
     public async isInStock(): Promise<boolean> {
         const response = await axios.get(
             `https://www.currys.co.uk/gb/uk/mcd_postcode_check/sProductId/${this.productId}/` +
-            `sPostCode/${this.postCode}/` +
+            `sPostCode/${this.postCode.replace(' ', '')}/` +
             `latitude/${this.latitude}/` +
             `longitude/${this.longitude}/` +
             `ajax.html`)
-        const stockPosition = response.data as CurrysStockPosition
+        const currysResponse = response.data as CurrysStockPosition
 
-        return stockPosition.data.collect.some((store) => store.stockType === 'IN_STOCK')
+        return currysResponse.status === 'success' ?
+            currysResponse.data.collect.some((store) => store.stockType === 'IN_STOCK') :
+            false
     }
 }
 
