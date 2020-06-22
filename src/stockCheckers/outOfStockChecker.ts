@@ -1,3 +1,4 @@
+import axios from 'axios'
 import chowdown from 'chowdown'
 import {SupportedStockChecker} from './stockChecker'
 import {Website} from '../configuration/configuration'
@@ -12,7 +13,8 @@ class OutOfStockChecker implements SupportedStockChecker {
     }
 
     async isInStock(): Promise<boolean> {
-        const scope = chowdown(this.url)
+        const webpage = await axios(this.url)
+        const scope = chowdown.body(webpage.data)
         const outOfStockInstances = await scope.collection(this.outOfStockSelector)
 
         return outOfStockInstances.length === 0
