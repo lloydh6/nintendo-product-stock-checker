@@ -16,6 +16,9 @@ const stockCheckerRegistrations: [string, StockCheckerFactory][] = [
     ], [
         'http(s?):\/\/uk.ooni.com',
         (website) => new InStockChecker(website, '#stock-indicator'),
+    ], [
+        'http(s?):\/\/www.johnlewis.com',
+        (website) => new OutOfStockChecker(website, '#button--add-to-basket-out-of-stock'),
     ],
 ]
 

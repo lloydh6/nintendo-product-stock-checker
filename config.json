@@ -2,22 +2,22 @@
     "websites": [
         {
             "url": "https://store.nintendo.co.uk/nintendo-switch-console/nintendo-switch-with-grey-joy-con-controllers/12245184.html",
-            "alias": "Nintendo Switch Grey"
+            "alias": "Nintendo Store - Nintendo Switch Grey"
         }, {
             "url": "https://www.currys.co.uk/gbuk/tv-and-home-entertainment/gaming/gaming-consoles/microsoft-xbox-one-x-with-forza-horizon-4-lego-speed-champions-10202173-pdt.html",
-            "alias": "Xbox One X (Forza Horizons 4)",
+            "alias": "Currys - Xbox One X (Forza Horizons 4)",
             "postCode": "M1 3BR",
             "latitude": "53.477193",
             "longitude": "-2.2334403"
         }, {
-            "url": "https://www.currys.co.uk/gbuk/tv-and-home-entertainment/gaming/gaming-consoles/microsoft-xbox-one-x-with-star-wars-jedi-fallen-order-deluxe-edition-10202410-pdt.html",
-            "alias": "Xbox One X (Jedi Fallen Order)",
-            "postCode": "M1 3BR",
-            "latitude": "53.477193",
-            "longitude": "-2.2334403"
+            "url": "https://ao.com/product/cyv00465-xbox-one-console-black-71959-291.aspx",
+            "alias": "AO.com - Xbox One X (Forza Horizons 4)"
         }, {
             "url": "https://uk.ooni.com/collections/shop-all/products/ooni-3",
-            "alias": "Ooni 3 Portable Wood-Fired Outdoor Pizza Oven"
+            "alias": "Ooni Store - Ooni 3 Portable Wood-Fired Outdoor Pizza Oven"
+        }, { 
+            "url": "https://www.johnlewis.com/microsoft-xbox-one-x-console-1tb-with-wireless-controller-and-forza-horizon-4-lego-speed-champions-bundle/p4810939",
+            "alias": "John Lewis - Xbox One X (Forza Horizons 4)"
         }
     ]
 }
