@@ -1,12 +1,13 @@
 import {SupportedStockChecker, NotSupportedStockChecker} from './stockChecker'
 
 class SupportedStockCheckLogger implements SupportedStockChecker {
-    public readonly alias!: string
+    public readonly alias: string
     public readonly isSupported = true
-    public readonly url!: string
+    public readonly url: string
 
     constructor(private loggedInstance: SupportedStockChecker) {
-        Object.assign(this, loggedInstance)
+        this.alias = loggedInstance.alias
+        this.url = loggedInstance.url
     }
 
     async isInStock(): Promise<boolean> {
