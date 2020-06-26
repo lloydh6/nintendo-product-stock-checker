@@ -2,12 +2,13 @@ import {SupportedStockChecker} from './stockChecker'
 import {NotificationFactory} from '../notifications/notifcationFactory'
 
 class StockCheckNotifier implements SupportedStockChecker {
-    public readonly alias!: string
+    public readonly alias: string
     public readonly isSupported = true
-    public readonly url!: string
+    public readonly url: string
 
     constructor(private notifiedInstance: SupportedStockChecker, private createNotification: NotificationFactory) {
-        Object.assign(this, notifiedInstance)
+        this.alias = notifiedInstance.alias
+        this.url = notifiedInstance.url
     }
 
     async isInStock(): Promise<boolean> {
