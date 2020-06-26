@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import {StockChecker, stockCheckingContainer} from './stockChecker'
+import {App, appContainer} from './app'
 
-const stockChecker = stockCheckingContainer.resolve(StockChecker)
+const app = appContainer.resolve(App)
 
-stockChecker.watch()
+app.start()

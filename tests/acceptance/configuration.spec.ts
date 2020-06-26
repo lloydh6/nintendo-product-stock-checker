@@ -2,30 +2,37 @@ import 'reflect-metadata'
 import {Autofixture} from 'ts-autofixture/dist/src'
 import fs from 'fs'
 import {mocked} from 'ts-jest/utils'
-import {StockChecker, stockCheckingContainer} from '../../src/stockChecker'
+import {App, appContainer} from '../../src/app'
+import registerDependencies from '../../src/registerDependencies'
 
 jest.mock('fs')
 const mockedFileSystem = mocked(fs, true)
-const fixture = new Autofixture()
-const exampleWebsite = {url: '', alias: ''}
-const exampleConfiguration = {websites: exampleWebsite}
-
-stockCheckingContainer.register('fileSystem', {useValue: mockedFileSystem})
 
 describe('Configuration', () => {
-    const configuration = fixture.create(exampleConfiguration)
-    mockedFileSystem.readFileSync.mockReturnValue(JSON.stringify(configuration))
+    const fixture = new Autofixture()
+
+    beforeEach(() => {
+        const exampleWebsite = {url: '', alias: ''}
+        const exampleConfiguration = {websites: exampleWebsite}
+        const configuration = fixture.create(exampleConfiguration)
+        mockedFileSystem.readFileSync.mockReturnValue(JSON.stringify(configuration))
+
+        appContainer.reset()
+        registerDependencies(appContainer)
+
+        appContainer.register('fileSystem', {useValue: mockedFileSystem})
+    })
 
     it('Reports an error when a configuration file isn\'t found or specified', () => {
         mockedFileSystem.existsSync.mockReturnValue(false)
 
-        expect(() => stockCheckingContainer.resolve(StockChecker))
+        expect(() => appContainer.resolve(App))
             .toThrowError('Configuration file has not been found or specified.')
     })
 
     it('Loads \'config.json\'', () => {
         mockedFileSystem.existsSync.mockReturnValue(true)
-        stockCheckingContainer.resolve(StockChecker)
+        appContainer.resolve(App)
 
         expect(fs.readFileSync).toHaveBeenCalledWith('./config.json')
     })
@@ -34,9 +41,9 @@ describe('Configuration', () => {
         const expectedFileName = fixture.create({value: ''}).value
 
         mockedFileSystem.existsSync.mockReturnValue(true)
-        stockCheckingContainer.register('argv', {useValue: ['ignored', 'ignored', expectedFileName]})
+        appContainer.register('argv', {useValue: ['ignored', 'ignored', expectedFileName]})
 
-        stockCheckingContainer.resolve(StockChecker)
+        appContainer.resolve(App)
 
         expect(mockedFileSystem.readFileSync).toHaveBeenCalledWith(expectedFileName)
     })

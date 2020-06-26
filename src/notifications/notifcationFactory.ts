@@ -1,7 +1,11 @@
 import notifier from 'node-notifier'
 import {Notification} from 'node-notifier/notifiers/notificationcenter'
 
-const createNotification = (options: Notification) => {
+interface NotificationFactory {
+    (options: Notification): void
+}
+
+const createNotification: NotificationFactory = (options: Notification) => {
     notifier.notify({
         ...options,
         wait: true,
@@ -10,4 +14,4 @@ const createNotification = (options: Notification) => {
     })
 }
 
-export default createNotification
+export {NotificationFactory, createNotification}
