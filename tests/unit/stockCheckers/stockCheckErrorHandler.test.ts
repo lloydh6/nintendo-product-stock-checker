@@ -3,7 +3,17 @@ import {StockCheckErrorHandler} from '../../../src/stockCheckers/stockCheckError
 
 describe('StockCheckerErrorHandler', () => {
     test('has same URL as decorated instance', () => {
+        const decoratedInstance: SupportedStockChecker = {
+            url: 'some url',
+            alias: 'my alias',
+            isSupported: true,
+            isInStock: () => Promise.resolve(true),
+        }
 
+        const decorator = new StockCheckErrorHandler(decoratedInstance)
+
+        expect(decorator.url)
+            .toBe(decoratedInstance.url)
     })
 
     test('has same alias as decorated instance', () => {

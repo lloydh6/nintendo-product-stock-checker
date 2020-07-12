@@ -6,6 +6,7 @@ class StockCheckErrorHandler implements SupportedStockChecker {
     public readonly url!: string
 
     constructor(private errorHandledInstance: SupportedStockChecker) {
+        this.url = 'some url'
     }
 
     async isInStock(): Promise<boolean> {
