@@ -13,8 +13,13 @@ class StockCheckErrorHandler implements SupportedStockChecker {
         try {
             await this.errorHandledInstance.isInStock()
         } catch (error) {
-            console.log('my alias not found. Check configuration.')
+            if (error.message === 'Request failed with status code 404') {
+                console.log('my alias not found. Check configuration.')
+            } else {
+                console.log('Error when processing my alias.')
+            }
         }
+
         return false
     }
 }

@@ -48,9 +48,7 @@ describe('StockCheckerErrorHandler', () => {
             url: 'some url',
             alias: 'my alias',
             isSupported: true,
-            isInStock: async () => {
-                throw new Error('Request failed with status code 404')
-            },
+            isInStock: () => Promise.reject(Error('Request failed with status code 404')),
         }
         const decorator = new StockCheckErrorHandler(decoratedInstance)
 
@@ -61,7 +59,20 @@ describe('StockCheckerErrorHandler', () => {
                 decoratedInstance.alias + ' not found. Check configuration.')
     })
 
-    test('reports when it encounters an error', () => {
+    test('reports when it encounters an error', async () => {
+        const spy = jest.spyOn(console, 'log')
+        const decoratedInstance: SupportedStockChecker = {
+            url: 'some url',
+            alias: 'my alias',
+            isSupported: true,
+            isInStock: () => Promise.reject(Error('There has been a problem')),
+        }
+        const decorator = new StockCheckErrorHandler(decoratedInstance)
 
+        await decorator.isInStock()
+
+        expect(spy)
+            .toHaveBeenCalledWith(
+                `Error when processing ${decoratedInstance.alias}.`)
     })
 })
