@@ -2,7 +2,7 @@
   "dependencies": {
     "chowdown": "^1.2.5",
     "esm": "^3.2.25",
-    "node-notifier": "^7.0.0"
+    "node-notifier": "^8.0.1"
   },
   "scripts": {
     "start": "node -r esm main.js"
